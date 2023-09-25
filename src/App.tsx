@@ -16,8 +16,12 @@ function App() {
             <p>Segunda, 25 de setembro 16:56 </p>
           </div>
           <div className='content'>
-            <p>20ºC</p>
-            <img src='https://openweathermap.org/img/wn/10d@2x.png' alt='' />
+            <p className='temperature'>20ºC</p>
+            <img
+              src='https://openweathermap.org/img/wn/10d@2x.png'
+              alt='Weather icon.'
+              className='weather-icon'
+            />
           </div>
         </section>
         <p>Drizzle</p>
