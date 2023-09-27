@@ -1,0 +1,95 @@
+.card-container {
+  max-width: 85vw;
+}
+
+.box,
+.header,
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.box {
+  padding: 3rem;
+  border-radius: 5%;
+  box-shadow: 0 8px 22px 0 rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(100px);
+}
+
+.header h1 {
+  padding: 0;
+  margin: 1.5rem 0 0;
+  font-size: var(--h1);
+}
+
+.header h1 span {
+  margin-right: 0.5rem;
+  font-size: var(--primary-subheading);
+}
+
+.header p {
+  font-size: var(--secondary-subheading);
+  margin: 0.5rem 0;
+}
+
+.content {
+  position: relative;
+}
+
+.content p {
+  margin: 0;
+}
+
+.content .temperature {
+  font-size: var(--large-title);
+}
+
+.content .subheading {
+  position: absolute;
+  top: 2.5rem;
+  left: 3.5rem;
+}
+
+.content .subheading .weather-condition {
+  margin: 3rem 0 0;
+}
+
+.content .subheading .icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.content .subheading .weather-icon {
+  height: 10rem;
+}
+
+.content .weather-info {
+  margin-top: 2rem;
+  max-width: 100%;
+
+  box-shadow: 0 0 22px 0 rgba(0, 0, 0, 0.15);
+
+  background-color: transparent;
+  padding: 1rem 0.5rem;
+  border-radius: 5%;
+
+  display: flex;
+}
+
+.content .weather-info .list {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0 3rem;
+  gap: 1rem;
+}
+
+.content .weather-info .list .item-list {
+  display: flex;
+  flex-direction: column;
+}
