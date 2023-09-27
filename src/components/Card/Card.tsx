@@ -1,4 +1,4 @@
-import { LocationIcon, UmbrellaIcon, TempIcon, WindIcon } from '../Icons/Icons';
+import { LocationIcon, DropletIcon, TempIcon, WindIcon } from '../Icons/icons';
 import './Card.scss';
 
 export function Card() {
@@ -30,16 +30,19 @@ export function Card() {
             <div className='weather-info'>
               <ul className='list'>
                 <li className='item-list'>
-                  <UmbrellaIcon className='item-icon' />
-                  <span>Humidity</span>
+                  <DropletIcon className='item-icon' />
+                  <span className='item-value'>100%</span>
+                  <p className='item-label'>Humidity</p>
                 </li>
                 <li className='item-list'>
                   <TempIcon className='item-icon' />
-                  <span>39º</span>
+                  <span className='item-value'>39º</span>
+                  <p className='item-label'>Temp. Máx</p>
                 </li>
                 <li className='item-list'>
                   <WindIcon className='item-icon' />
-                  <span>25KM/h</span>
+                  <span className='item-value'>25KM/h</span>
+                  <p className='item-label'>Wind Speed</p>
                 </li>
               </ul>
             </div>

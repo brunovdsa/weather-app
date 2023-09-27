@@ -2,11 +2,23 @@
 
 :root {
   //COLOR PALLETE
-  --green: #219c90;
+
+  //STATIC
   --white: #f3f3f3;
-  --yellow: #e9b824;
-  --orange: #ee9322;
-  --red: #d83f31;
+  --lighter-purple: #d0d3ff;
+  --light-purple: #abace3;
+  --violet: rgb(118, 121, 250);
+  --purple: #4b4ce5;
+
+  //GRADIENT
+  --gradient: linear-gradient(
+    36deg,
+    rgba(118, 121, 250, 1) 0%,
+    rgba(169, 166, 247, 1) 33%,
+    rgba(236, 237, 255, 1) 100%
+  );
+
+  //BOX SHADOW
 
   //FONT FAMILY
   --primary-font: 'Merriweather', sans-serif;
@@ -15,8 +27,8 @@
   --h1: 2rem; //150px;
   --large-title: 8rem;
   --primary-subheading: 1.7rem; //28px;
-  --secondary-subheading: 0.875rem; //14px;
-  --nav-text: 1remt; //16rem;
+  --secondary-subheading: 0.7rem; //14px;
+  --text: 0.9rem; //16rem;
   --body: 1.125rem; //18rem
 }
 
