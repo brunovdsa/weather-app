@@ -6,6 +6,7 @@ import { LocationIcon, DropletIcon, TempIcon, WindIcon } from '../Icons/icons';
 import './Card.scss';
 import { getCurrentDate } from '../utils/getCurrentDate';
 import { captalizeFirsLetter } from '../utils/captalizeFirstLetter';
+import { getWeatherIcon } from '../utils/setWeatherIcon';
 
 interface CardProps {
   name: string;
@@ -17,6 +18,7 @@ interface CardProps {
   weather: [
     {
       description: string;
+      icon: string;
     }
   ];
 
@@ -28,17 +30,13 @@ interface CardProps {
 export function Card() {
   const [weatherData, setWeatherData] = useState<CardProps>();
 
-  const ENDPOINT: string =
-    '/weather?lat=-26.3051&lon=-48.8461&units=metric&appid=';
-
   useEffect(() => {
+    const ENDPOINT: string = '/weather?q=bahia&units=metric&appid=';
+
     axios.get(`${BASE_URL}${ENDPOINT}${API_KEY}`).then((res) => {
-      console.log(res);
       setWeatherData(res.data);
     });
   }, []);
-
-  console.log(weatherData);
 
   return (
     <main className='card-container'>
@@ -66,7 +64,7 @@ export function Card() {
                     {captalizeFirsLetter(weatherData.weather[0].description)}
                   </p>
                   <img
-                    src='https://openweathermap.org/img/wn/10d@2x.png'
+                    src={getWeatherIcon(weatherData.weather[0].icon)}
                     alt='Weather icon.'
                     className='weather-icon'
                   />
