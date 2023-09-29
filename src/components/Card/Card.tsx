@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+
 import { API_KEY, BASE_URL } from '../../service/api-config';
 
-import { LocationIcon, DropletIcon, TempIcon, WindIcon } from '../Icons/icons';
-import './Card.scss';
 import { getCurrentDate } from '../utils/getCurrentDate';
 import { captalizeFirsLetter } from '../utils/captalizeFirstLetter';
 import { getWeatherIcon } from '../utils/setWeatherIcon';
+
+import { LocationIcon, DropletIcon, TempIcon, WindIcon } from '../Icons/icons';
+
+import './Card.scss';
 
 interface CardProps {
   name: string;
@@ -29,21 +32,32 @@ interface CardProps {
 
 export function Card() {
   const [weatherData, setWeatherData] = useState<CardProps>();
+  const [timestamp, setTimestamp] = useState<number>();
 
   useEffect(() => {
-    const ENDPOINT: string = '/weather?q=bahia&units=metric&appid=';
-
-    axios.get(`${BASE_URL}${ENDPOINT}${API_KEY}`).then((res) => {
-      setWeatherData(res.data);
+    navigator.geolocation.watchPosition(function (position) {
+      setTimestamp(position.timestamp);
+      const ENDPOINT: string = `/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=`;
+      axios.get(`${BASE_URL}${ENDPOINT}${API_KEY}`).then((res) => {
+        setWeatherData(res.data);
+      });
     });
   }, []);
 
+  if (timestamp !== undefined) {
+    let b: Date = new Date(timestamp);
+
+    console.log(b);
+  } else {
+    console.error('err');
+  }
+
   return (
     <main className='card-container'>
-      {weatherData === undefined ? (
-        <>loading...</>
-      ) : (
-        <article className='box'>
+      <article className='box'>
+        {weatherData === undefined ? (
+          <>loading...</>
+        ) : (
           <section>
             <div className='header'>
               <h1 className='location'>
@@ -55,19 +69,19 @@ export function Card() {
               <p>{getCurrentDate()}</p>
             </div>
             <div className='content'>
-              <p className='temperature'>{`${Math.floor(
-                weatherData.main.temp
-              )}º`}</p>
-              <div className='subheading'>
-                <div className='icon-container'>
+              <div className='weather'>
+                <img
+                  src={getWeatherIcon(weatherData.weather[0].icon)}
+                  alt='Weather icon.'
+                  className='weather-icon'
+                />
+                <div className='weather-status'>
+                  <p className='temperature'>{`${Math.floor(
+                    weatherData.main.temp
+                  )}º`}</p>
                   <p className='weather-condition'>
                     {captalizeFirsLetter(weatherData.weather[0].description)}
                   </p>
-                  <img
-                    src={getWeatherIcon(weatherData.weather[0].icon)}
-                    alt='Weather icon.'
-                    className='weather-icon'
-                  />
                 </div>
               </div>
               <div className='weather-info'>
@@ -95,8 +109,8 @@ export function Card() {
               </div>
             </div>
           </section>
-        </article>
-      )}
+        )}
+      </article>
     </main>
   );
 }

@@ -35,50 +35,42 @@
   margin: 0.5rem 0;
 }
 
-.content {
-  position: relative;
-}
-
-.content p {
-  margin: 0;
-}
-
 .content .temperature {
   font-size: var(--large-title);
   font-weight: 600;
+  margin: 0;
 }
 
-.content .subheading {
-  position: absolute;
-  top: 2.5rem;
-  left: 3.5rem;
+.content .weather {
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
-.content .subheading .weather-condition {
-  margin: 3rem 0 0;
+.content .weather .weather-icon {
+  height: 9rem;
+}
+
+.content .weather-status {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.content .weather-condition {
+  margin: 0;
   font-size: var(--body);
   font-weight: 600;
 }
 
-.content .subheading .icon-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-}
-
-.content .subheading .weather-icon {
-  height: 10rem;
-}
-
 .content .weather-info {
-  margin-top: 2rem;
   max-width: 100%;
 
   box-shadow: 0 0 22px 0 rgba(0, 0, 0, 0.05);
 
   background-color: transparent;
   padding: 0.5rem;
+  margin-top: 1.5rem;
   border-radius: 50px;
 
   display: flex;
