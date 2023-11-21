@@ -35,22 +35,20 @@ export function Card() {
   const [timestamp, setTimestamp] = useState<number>();
 
   useEffect(() => {
-    navigator.geolocation.watchPosition(function (position) {
+    navigator.geolocation.getCurrentPosition(function (position) {
       setTimestamp(position.timestamp);
+
+      console.log(position);
+
       const ENDPOINT: string = `/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=`;
+
       axios.get(`${BASE_URL}${ENDPOINT}${API_KEY}`).then((res) => {
         setWeatherData(res.data);
       });
     });
   }, []);
 
-  if (timestamp !== undefined) {
-    let b: Date = new Date(timestamp);
-
-    console.log(b);
-  } else {
-    console.error('err');
-  }
+  console.log(getCurrentDate(timestamp!));
 
   return (
     <main className='card-container'>
@@ -66,7 +64,7 @@ export function Card() {
                 </span>
                 {weatherData.name}
               </h1>
-              <p>{getCurrentDate()}</p>
+              {timestamp && getCurrentDate(timestamp)}
             </div>
             <div className='content'>
               <div className='weather'>

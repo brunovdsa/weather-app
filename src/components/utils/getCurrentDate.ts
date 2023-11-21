@@ -1,4 +1,4 @@
-export function getCurrentDate() {
+export function getCurrentDate(timestamp: number) {
   const weekday = [
     'Sunday',
     'Monday',
@@ -23,7 +23,7 @@ export function getCurrentDate() {
     'December',
   ];
 
-  let newDate: Date = new Date();
+  let newDate: Date = new Date(timestamp);
   let day = weekday[newDate.getDay()];
   let date: number = newDate.getDate();
   let month: string = monthName[newDate.getMonth() + 1];
