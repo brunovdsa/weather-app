@@ -16,7 +16,9 @@ import pmRain from '../../assets/icons/amRain.png';
 
 import thunderstorm from '../../assets/icons/am_pmThunderStom.png';
 
-export function getWeatherIcon(id: string) {
+import mist from '../../assets/icons/mist.png';
+
+export function setWeatherIcon(id: string) {
   let icon;
 
   switch (id) {
@@ -74,6 +76,11 @@ export function getWeatherIcon(id: string) {
       break;
     case '11n':
       icon = thunderstorm;
+      break;
+
+    //Thunderstorm
+    case '50d':
+      icon = mist;
       break;
 
     //Default

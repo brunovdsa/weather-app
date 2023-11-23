@@ -5,7 +5,7 @@ import { API_KEY, BASE_URL } from '../../service/api-config';
 
 import { getCurrentDate } from '../utils/getCurrentDate';
 import { captalizeFirsLetter } from '../utils/captalizeFirstLetter';
-import { getWeatherIcon } from '../utils/setWeatherIcon';
+import { setWeatherIcon } from '../utils/setWeatherIcon';
 
 import { LocationIcon, DropletIcon, TempIcon, WindIcon } from '../Icons/icons';
 
@@ -69,7 +69,7 @@ export function Card() {
             <div className='content'>
               <div className='weather'>
                 <img
-                  src={getWeatherIcon(weatherData.weather[0].icon)}
+                  src={setWeatherIcon(weatherData.weather[0].icon)}
                   alt='Weather icon.'
                   className='weather-icon'
                 />
