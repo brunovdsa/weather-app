@@ -5,8 +5,6 @@ import { SearchBar } from './components/SearchBar/SearchBar';
 import axios from 'axios';
 import { API_KEY, BASE_URL } from './service/api-config';
 import { CardDataProps } from './interfaces/interfaces';
-import { getSearchResultCurrentDate } from './components/utils/getSearchResultCurrentDate';
-import moment from 'moment';
 
 function App() {
   const [weatherData, setWeatherData] = useState<CardDataProps>();
