@@ -26,7 +26,6 @@ function App() {
 
   const getSearchResult = (result: CardDataProps) => {
     setSearchResult(result);
-    // searchResult?.dt
   };
 
   return (
@@ -38,9 +37,17 @@ function App() {
       />
 
       {searchResult === undefined ? (
-        <Card weatherData={weatherData} timestamp={currentTimestamp} />
+        <Card
+          weatherData={weatherData}
+          timestamp={currentTimestamp}
+          timezone={0}
+        />
       ) : (
-        <Card weatherData={searchResult} timestamp={currentTimestamp} />
+        <Card
+          weatherData={searchResult}
+          timestamp={searchResult.dt}
+          timezone={searchResult.timezone}
+        />
       )}
     </div>
   );

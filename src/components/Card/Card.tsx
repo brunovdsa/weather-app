@@ -22,7 +22,8 @@ export function Card(props: CardProps) {
                 </span>
                 {props.weatherData.name}
               </h1>
-              {props.timestamp && getCurrentDate(props.timestamp)}
+              {props.timestamp &&
+                getCurrentDate(props.timestamp, props.timezone)}
             </div>
             <div className='content'>
               <div className='weather'>

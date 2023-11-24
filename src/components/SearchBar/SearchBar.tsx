@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { API_KEY, BASE_URL } from '../../service/api-config';
 import { CardDataProps } from '../../interfaces/interfaces';
-import { getSearchResultCurrentDate } from '../utils/getSearchResultCurrentDate';
 
 interface SearchBarProps {
   setSearchWord: any;

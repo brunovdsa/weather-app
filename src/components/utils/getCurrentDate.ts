@@ -1,4 +1,6 @@
-export function getCurrentDate(timestamp: number) {
+import moment from 'moment';
+
+export function getCurrentDate(timestamp: number, timezone: number) {
   const weekday = [
     'Sunday',
     'Monday',
@@ -22,6 +24,13 @@ export function getCurrentDate(timestamp: number) {
     'November',
     'December',
   ];
+
+  var unixToMilliseconds = timestamp * 1000;
+  var timeZoneToMinutes = timezone / 60;
+
+  var formatedData = moment(unixToMilliseconds)
+    .utcOffset(timeZoneToMinutes)
+    .format('ddd MMM D Y hh:mm:ss A ');
 
   let newDate: Date = new Date(timestamp);
   let day = weekday[newDate.getDay()];

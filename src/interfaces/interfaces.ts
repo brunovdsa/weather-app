@@ -17,10 +17,11 @@ export interface CardDataProps {
   };
 
   dt?: number;
-  timezone?: number;
+  timezone: number;
 }
 
 export interface CardProps {
   weatherData: CardDataProps | undefined;
   timestamp: number | undefined;
+  timezone: number;
 }
