@@ -1,22 +1,32 @@
-interface getSearchResultCurrentDateProps {
-  unix_timestamp: any;
-}
+import moment from 'moment';
 
-export function getSearchResultCurrentDate() {
-  var date = new Date((1700768248 + 34200) * 1000);
+export function getSearchResultCurrentDate(
+  unix_timestamp: number,
+  timezone: number
+) {
+  var unixToMilliseconds = unix_timestamp * 1000;
 
-  // Hours part from the timestamp
-  var hours = date.getHours();
+  var DATA = moment(unixToMilliseconds)
+    .utcOffset(timezone)
+    .format('ddd MMM D Y hh:mm:ss A ');
 
-  // Minutes part from the timestamp
-  var minutes = '0' + date.getMinutes();
+  console.log(DATA);
 
-  // Seconds part from the timestamp
-  var seconds = '0' + date.getSeconds();
+  // var date = new Date(T + 32400);
+  // date.toString();
 
-  // Will display time in 10:30:23 format
-  var formattedTime =
-    hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+  // // Hours part from the timestamp
+  // var hours = date.getHours();
 
-  console.log(formattedTime);
+  // // Minutes part from the timestamp
+  // var minutes = '0' + date.getMinutes();
+
+  // // Seconds part from the timestamp
+  // var seconds = '0' + date.getSeconds();
+
+  // // Will display time in 10:30:23 format
+  // var formattedTime =
+  //   hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+  // console.log(date, ' date');
 }

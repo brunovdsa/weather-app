@@ -15,6 +15,9 @@ export interface CardDataProps {
   wind: {
     speed: number;
   };
+
+  dt?: number;
+  timezone?: number;
 }
 
 export interface CardProps {

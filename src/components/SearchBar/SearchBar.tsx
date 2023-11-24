@@ -13,13 +13,11 @@ export function SearchBar(props: SearchBarProps) {
   const searchLocation = async (e: any) => {
     e.preventDefault();
 
-    const ENDPOINT: string = `/weather?q=${props.searchWord}&unit=metric&appid=`;
+    const ENDPOINT: string = `/weather?q=${props.searchWord}&units=metric&appid=`;
 
     axios.get(`${BASE_URL}${ENDPOINT}${API_KEY}`).then((res) => {
       props.searchResult(res.data);
     });
-
-    getSearchResultCurrentDate();
   };
 
   return (
