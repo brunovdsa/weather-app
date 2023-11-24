@@ -26,6 +26,8 @@ function App() {
     setSearchResult(result);
   };
 
+  console.log('renderizado');
+
   return (
     <div className='container'>
       <SearchBar

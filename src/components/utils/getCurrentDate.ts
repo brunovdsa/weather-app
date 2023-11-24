@@ -8,11 +8,5 @@ export function getCurrentDate(timestamp: number, timezone: number) {
     .utcOffset(timeZoneToMinutes)
     .format('dddd, MMM Do, h:mm A');
 
-  console.log(
-    timezone + ' timezone',
-    timeZoneToMinutes + 'timezone to minutes',
-    timestamp + ' timestamp'
-  );
-
   return formatedData;
 }
