@@ -1,32 +1,22 @@
-import axios from 'axios';
-import { API_KEY, BASE_URL } from '../../service/api-config';
-import { CardDataProps } from '../../interfaces/interfaces';
-
 interface SearchBarProps {
-  setSearchWord: any;
-  searchWord: string;
-  searchResult: (s: CardDataProps) => void;
+  handleCallback: any;
 }
 
 export function SearchBar(props: SearchBarProps) {
-  const searchLocation = async (e: any) => {
+  const onTrigger = (e: any) => {
     e.preventDefault();
-
-    const ENDPOINT: string = `/weather?q=${props.searchWord}&units=metric&appid=`;
-
-    axios.get(`${BASE_URL}${ENDPOINT}${API_KEY}`).then((res) => {
-      props.searchResult(res.data);
-    });
+    // Call the parent callback function
+    props.handleCallback(e.target.searchAddress.value);
   };
 
   return (
-    <form>
+    <form onSubmit={onTrigger}>
       <input
         type='text'
+        name='searchAddress'
         placeholder={`Search for free photos`}
-        onChange={(e: any) => props.setSearchWord(e.target.value)}
       />
-      <button onClick={searchLocation}>Click</button>
+      <button type='submit' value='Submit' />
     </form>
   );
 }

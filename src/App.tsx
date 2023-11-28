@@ -9,6 +9,7 @@ import { CardDataProps } from './interfaces/interfaces';
 function App() {
   const [weatherData, setWeatherData] = useState<CardDataProps>();
   const [currentTimestamp, setCurrentTimestamp] = useState<number>();
+
   const [searchKeyWord, setSearchKeyWord] = useState<string>('');
   const [searchResult, setSearchResult] = useState<CardDataProps>();
 
@@ -22,19 +23,22 @@ function App() {
     });
   }, []);
 
-  const getSearchResult = (result: CardDataProps) => {
-    setSearchResult(result);
+  const handleCallback = (childData: string) => {
+    setSearchKeyWord(childData);
+    console.log(searchKeyWord);
+
+    const ENDPOINT: string = `/weather?q=${searchKeyWord}&units=metric&appid=`;
+
+    axios.get(`${BASE_URL}${ENDPOINT}${API_KEY}`).then((res) => {
+      setSearchResult(res.data);
+    });
   };
 
   console.log('renderizado');
 
   return (
     <div className='container'>
-      <SearchBar
-        searchWord={searchKeyWord}
-        setSearchWord={setSearchKeyWord}
-        searchResult={getSearchResult}
-      />
+      <SearchBar handleCallback={handleCallback} />
 
       {searchResult === undefined ? (
         <Card
